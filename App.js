@@ -30,7 +30,7 @@ function App() {
     return getCharImg(bodyIndex, bodyStand);
   }, [bodyIndex]);
 
-  const refreshFrame = useCallback(() => {
+  const nextFrame = useCallback(() => {
     setFrame(frame => (frame + 1) % 60);
   });
 
@@ -40,7 +40,7 @@ function App() {
       return;
     };
     ts = timestamp;
-    refreshFrame();
+    nextFrame();
     rafId = window.requestAnimationFrame(refresh);
   }, []);
 
@@ -60,9 +60,9 @@ function App() {
   return (
     <div className="app">
       <div>
-        <button onClick={() => start()}>start</button>
-        <button onClick={() => pause()}>pause</button>
-        <button onClick={() => refreshFrame()}>next frame</button>
+        <button onClick={start}>start</button>
+        <button onClick={pause}>pause</button>
+        <button onClick={nextFrame}>next frame</button>
         <button onClick={() => setBody(loop(bodyStand))}>change body</button>
         <div>current frame: {frame}</div>
         <div>current head index: {headIndex}</div>
