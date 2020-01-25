@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useMemo, useState, useEffect, useCallback } from 'react';
 import range from 'lodash/range';
 // @ts-ignore
-import images from './assets/Mai Shiranui/*.png';
+import images from '../assets/Mai Shiranui/*.png';
 import './index.css';
 
 // this is visual fps, we only re-render on 12 fps not on real browser 60 fps since that would be too fast.
@@ -20,7 +20,7 @@ const loop = (range: number[]) => (index: number) => index >= range.length - 1 ?
 let ts = 0;
 let rafId = 0;
 
-const useLoopImage = (collections) => {
+const useLoopImage = (collections: number[]) => {
   const [index, setter] = useState(0);
   const src = useMemo(() => {
     return getCharImg(index, collections);
